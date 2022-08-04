@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace SpotifyAPITestApp.SpotifyIOService.DataHandling
 {
-    internal class DTO
+    public class DTO<ResponseType> where ResponseType : IResponse, new()
     {
+        public ResponseType Response { get; set; }
+        public void DeserializeResponse(string postCodeResponse)
+        {
+            Response = JsonConvert.DeserializeObject<ResponseType>(postCodeResponse);
+        }
     }
 }
