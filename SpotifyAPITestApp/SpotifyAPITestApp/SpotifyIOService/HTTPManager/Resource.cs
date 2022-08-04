@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SpotifyAPITestApp.SpotifyIOService.HTTPManager
 {
-    internal class Resource
+
+    public enum Resource
     {
+        tracks
     }
+
 }
