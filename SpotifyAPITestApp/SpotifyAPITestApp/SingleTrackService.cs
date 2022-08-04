@@ -22,11 +22,35 @@ namespace SpotifyAPITestApp
         // the response content as a string
         public string TrackResponse { get; set; }
 
+
+        // DRY Code Methods:
         public async Task MakeRequestAsync(string track)
         {
             TrackSelected = track;
             // make request
             TrackResponse = await CallManager.MakeRequestAsync(Resource.tracks, track, Method.Get);
+            // Parse JSON string into a JObject
+            Json_Response = JObject.Parse(TrackResponse);
+            // use DTO to convert JSON string to an object tree
+            TrackResponseDTO.DeserializeResponse(TrackResponse);
+        }
+
+        public async Task PutRequestAsync(string track) // Hopefull Save a track.
+        {
+            TrackSelected = track;
+            // make request
+            TrackResponse = await CallManager.MakeRequestAsync(Resource.tracks, track, Method.Put);
+            // Parse JSON string into a JObject
+            Json_Response = JObject.Parse(TrackResponse);
+            // use DTO to convert JSON string to an object tree
+            TrackResponseDTO.DeserializeResponse(TrackResponse);
+        }
+
+        public async Task DeleteRequestAsync(string track) // Hopefully Deletes a track.
+        {
+            TrackSelected = track;
+            // make request
+            TrackResponse = await CallManager.MakeRequestAsync(Resource.tracks, track, Method.Delete);
             // Parse JSON string into a JObject
             Json_Response = JObject.Parse(TrackResponse);
             // use DTO to convert JSON string to an object tree
