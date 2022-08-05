@@ -91,10 +91,10 @@ namespace SpotifyAPITestApp
         {
             return PlaylistResponseDTO.Response.tracks.total;
         }
-        // tracks.items.track.name string (possible loop)
-        public int GetPlaylistTrackName()
+        
+        public string GetPlaylistTrackName(int index) // tracks.items.track.name string (possible loop)
         {
-            throw new NotImplementedException();
+            return PlaylistResponseDTO.Response.tracks.items[index].track.name;
         }
     }
 }
