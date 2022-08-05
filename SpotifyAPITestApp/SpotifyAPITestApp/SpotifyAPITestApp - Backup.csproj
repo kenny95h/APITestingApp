@@ -17,4 +17,9 @@
     <PackageReference Include="RestSharp" Version="108.0.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="PlaylistServiceTests\" />
+  </ItemGroup>
+
 </Project>
