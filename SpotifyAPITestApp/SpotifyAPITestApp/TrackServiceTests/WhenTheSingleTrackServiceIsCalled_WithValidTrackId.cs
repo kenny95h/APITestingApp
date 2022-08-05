@@ -15,10 +15,23 @@ namespace SpotifyAPITestApp.TrackServiceTests
         {
             await _singleTrackService.MakeRequestAsync("2TpxZ7JUBn3uw46aR7qd6V");
         }
+
+        //[Test]
+        //public void StatusIs200_InJsonResponseBody()
+        //{
+        //    Assert.That(_singleTrackService.TrackResponseDTO.Response.status, Is.EqualTo("200"));
+        //}
+
         [Test]
-        public void StatusIs200_InJsonResponseBody()
+        public void ObjectNameOfTrack_IsPlaceInTheSun()
         {
-            Assert.That(_singleTrackService.Json_Response["status"].ToString(), Is.EqualTo("200"));
+            Assert.That(_singleTrackService.TrackResponseDTO.Response.name.ToString(), Is.EqualTo("All I Want"));
+        }
+
+        [Test]
+        public void NameOfTrack_IsPlaceInTheSun()
+        {
+            Assert.That(_singleTrackService.Json_Response["name"].ToString(), Is.EqualTo("All I Want"));
         }
     }
 }
