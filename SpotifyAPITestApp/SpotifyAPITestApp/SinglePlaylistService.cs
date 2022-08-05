@@ -61,5 +61,40 @@ namespace SpotifyAPITestApp
             PlaylistResponseDTO.DeserializeResponse(PlaylistResponse);
         }
 
+        // Test Help Methods:
+        public string GetPlaylistID()
+        {
+            return PlaylistResponseDTO.Response.id;
+        }
+
+        public string GetPlaylistName()
+        {
+            return PlaylistResponseDTO.Response.name;
+        }
+
+        public int GetPlaylistTotalFollowers()
+        {
+            return PlaylistResponseDTO.Response.followers.total;
+        }
+
+        public bool CheckIfPlaylistIsCollaborative()
+        {
+            return PlaylistResponseDTO.Response.collaborative;
+        }
+
+        public string GetPlaylistOwnerDisplayName()
+        {
+            return PlaylistResponseDTO.Response.owner.display_name;
+        }
+
+        public int GetPlaylistTotalTracks()
+        {
+            return PlaylistResponseDTO.Response.tracks.total;
+        }
+        // tracks.items.track.name string (possible loop)
+        public int GetPlaylistTrackName()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
