@@ -19,9 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Testhost.dll.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Folder Include="PlaylistServiceTests\" />
   </ItemGroup>
 
 </Project>
