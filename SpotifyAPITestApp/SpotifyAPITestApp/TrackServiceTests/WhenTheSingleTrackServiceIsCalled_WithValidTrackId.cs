@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace SpotifyAPITestApp.TrackServiceTests
 {
@@ -19,7 +20,7 @@ namespace SpotifyAPITestApp.TrackServiceTests
         //[Test]
         //public void StatusIs200_InJsonResponseBody()
         //{
-        //    Assert.That(_singleTrackService.TrackResponseDTO.Response.status, Is.EqualTo("200"));
+        //    Assert.That(_singleTrackService.TrackResponseDTO.Response, Is.EqualTo("200"));
         //}
 
         [Test]
