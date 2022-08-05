@@ -11,7 +11,7 @@ namespace SpotifyAPITestApp.SpotifyIOService.HTTPManager
     {
         tracks,
         playlists,
-        addtracks
+        playlisttracks
     }
 
 }
