@@ -17,15 +17,14 @@ namespace SpotifyAPITestApp.PlaylistServiceTests
         }
 
         [Test]
-        public void IDOfPlaylist_Is6QuKSXmuJpiHZec1mYrKwZ()
+        public void IDOfPlaylist_IsNotNull()
         {
-            Assert.That(_playlistService.GetPlaylistID(), Is.EqualTo("6QuKSXmuJpiHZec1mYrKwZ"));
+            Assert.That(_playlistService.GetPlaylistID(), Is.Not.Null);
         }
 
         [Test]
         public void NameOfPlaylist_IsNewPlaylist()
         {
-            // PlaylistResponseDTO.Response.name
             Assert.That(_playlistService.GetPlaylistName(), Is.EqualTo("New Playlist"));
         }
 
@@ -54,10 +53,10 @@ namespace SpotifyAPITestApp.PlaylistServiceTests
         }
 
         [Test]
-        [Ignore("Not Implemented")]
+        [Ignore("Not a possible test")]
         public void NameOfTrackInPlaylist_IsTrackNameHere()
         {
-            //Assert.That(_playlistService.GetPlaylistName(), Is.EqualTo("New Playlist"));
+            Assert.That(_playlistService.GetPlaylistTrackName(0), Is.EqualTo("Vetenskapsradion Historia"));
         }
     }
 }
