@@ -22,7 +22,11 @@ namespace SpotifyAPITestApp
         // the response content as a string
         public string TrackResponse { get; set; }
 
-
+        public SingleTrackService()
+        {
+            CallManager = new CallManager();
+            TrackResponseDTO = new DTO<TrackResponse>();
+        }
         // DRY Code Methods:
         public async Task MakeRequestAsync(string track)
         {
