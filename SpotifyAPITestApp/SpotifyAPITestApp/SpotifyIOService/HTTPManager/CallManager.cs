@@ -24,7 +24,7 @@ namespace SpotifyAPITestApp.SpotifyIOService.HTTPManager
 
         public async Task<string> MakeRequestAsync(Resource resource, string code, Method method)
         {
-                _request.Resource = $"{resource}/{code.ToLower().Replace(" ", "")}";
+                _request.Resource = $"{AppConfigReader.BaseUrl}{resource}/{code}";
                 _request.Method = method;
                 Response = await _client.ExecuteAsync(_request);
                 return Response.Content;
