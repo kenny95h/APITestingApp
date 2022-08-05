@@ -61,6 +61,17 @@ namespace SpotifyAPITestApp
             PlaylistResponseDTO.DeserializeResponse(PlaylistResponse);
         }
 
+        public async Task GetTracksRequestAsync(string playlist)
+        {
+            PlaylistSelected = playlist;
+            // make request
+            PlaylistResponse = await CallManager.MakeRequestAsync(Resource.playlists, playlist, Method.Get);
+            // Parse JSON string into a JObject
+            Json_Response = JObject.Parse(PlaylistResponse);
+            // use DTO to convert JSON string to an object tree
+            PlaylistResponseDTO.DeserializeResponse(PlaylistResponse);
+        }
+
         // Test Help Methods:
         public string GetPlaylistID()
         {

@@ -46,7 +46,14 @@ namespace SpotifyAPITestApp.SpotifyIOService.HTTPManager
             }
             else 
             {
-                _request.Resource = $"{AppConfigReader.BaseUrl}{resource}/{code}";
+                if (resource == Resource.tracks)
+                {
+                    _request.Resource = $"{AppConfigReader.BaseUrl}{resource}/{code}";
+                }
+                else
+                {
+                    _request.Resource = $"{AppConfigReader.BaseUrl}{resource}/{code}/tracks/";
+                }
                 _request.Method = method;
                 Response = await _client.ExecuteAsync(_request);
                 return Response.Content;
