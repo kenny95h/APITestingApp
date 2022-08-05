@@ -39,5 +39,27 @@ namespace SpotifyAPITestApp
             PlaylistResponseDTO.DeserializeResponse(PlaylistResponse);
         }
 
+        public async Task AddTracksRequestAsync(string tracks)
+        {
+            PlaylistSelected = tracks;
+            // make request
+            PlaylistResponse = await CallManager.MakeRequestAsync(Resource.addtracks, tracks, Method.Post);
+            // Parse JSON string into a JObject
+            Json_Response = JObject.Parse(PlaylistResponse);
+            // use DTO to convert JSON string to an object tree
+            PlaylistResponseDTO.DeserializeResponse(PlaylistResponse);
+        }
+
+        public async Task DeleteTracksRequestAsync(string playlist)
+        {
+            PlaylistSelected = playlist;
+            // make request
+            PlaylistResponse = await CallManager.MakeRequestAsync(Resource.addtracks, playlist, Method.Post);
+            // Parse JSON string into a JObject
+            Json_Response = JObject.Parse(PlaylistResponse);
+            // use DTO to convert JSON string to an object tree
+            PlaylistResponseDTO.DeserializeResponse(PlaylistResponse);
+        }
+
     }
 }
