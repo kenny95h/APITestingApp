@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace SpotifyAPITestApp.PlaylistServiceTests
 {
-    public class WhenThePlaylistServiceIsCalledToDeleteTracksFromPlaylist_WithValidTracks
+    public class WhenThePlaylistServiceIsCalledToAddTracksToPlaylist_WithValidTracks
     {
         readonly SinglePlaylistService _playlistService = new SinglePlaylistService();
 
         [OneTimeSetUp]
         public async Task OneTimeSetUpAsync()
         {
-            await _playlistService.DeleteTracksRequestAsync("spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M");
+            await _playlistService.AddTracksRequestAsync("spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M");
         }
 
         [Test]
