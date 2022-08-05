@@ -10,7 +10,8 @@ namespace SpotifyAPITestApp.SpotifyIOService.HTTPManager
     public enum Resource
     {
         tracks,
-        playlists
+        playlists,
+        addtracks
     }
 
 }

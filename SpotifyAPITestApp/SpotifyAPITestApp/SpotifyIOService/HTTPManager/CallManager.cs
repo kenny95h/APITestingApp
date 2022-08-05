@@ -26,11 +26,23 @@ namespace SpotifyAPITestApp.SpotifyIOService.HTTPManager
         {
             if (method == Method.Post)
             {
-                _request.Resource = $"{AppConfigReader.BaseUrl}users/{AppConfigReader.UserID}/{resource}/";
-                _request.AddJsonBody(new { Name = code });
-                _request.Method = method;
-                Response = await _client.ExecuteAsync(_request);
-                return Response.Content;
+                if (resource == Resource.addtracks)
+                {
+                    _request.Resource = $"{AppConfigReader.BaseUrl}playlists/{AppConfigReader.PlaylistId}/tracks/";
+                    _request.AddJsonBody(new { uris = code.Split(',') });
+                    _request.Method = method;
+                    Response = await _client.ExecuteAsync(_request);
+                    return Response.Content;
+                }
+                else
+                {
+                    _request.Resource = $"{AppConfigReader.BaseUrl}users/{AppConfigReader.UserID}/{resource}/";
+                    _request.AddJsonBody(new { Name = code });
+                    _request.Method = method;
+                    Response = await _client.ExecuteAsync(_request);
+                    return Response.Content;
+                }
+               
             }
             else 
             {
