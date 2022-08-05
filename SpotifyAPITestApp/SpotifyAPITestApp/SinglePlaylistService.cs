@@ -32,7 +32,7 @@ namespace SpotifyAPITestApp
         {
             PlaylistSelected = playlist;
             // make request
-            PlaylistResponse = await CallManager.MakeRequestAsync(Resource.playlist, playlist, Method.Get);
+            PlaylistResponse = await CallManager.MakeRequestAsync(Resource.playlists, playlist, Method.Post);
             // Parse JSON string into a JObject
             Json_Response = JObject.Parse(PlaylistResponse);
             // use DTO to convert JSON string to an object tree
