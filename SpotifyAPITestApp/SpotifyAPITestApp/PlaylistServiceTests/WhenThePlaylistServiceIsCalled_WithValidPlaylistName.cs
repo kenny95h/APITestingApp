@@ -13,7 +13,7 @@ namespace SpotifyAPITestApp.PlaylistServiceTests
         [OneTimeSetUp]
         public async Task OneTimeSetUpAsync()
         {
-            await _playlistService.MakeRequestAsync("New Playlist");
+            await _playlistService.MakeRequestAsync("This is David's");
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace SpotifyAPITestApp.PlaylistServiceTests
         [Test]
         public void NameOfPlaylist_IsNewPlaylist()
         {
-            Assert.That(_playlistService.GetPlaylistName(), Is.EqualTo("New Playlist"));
+            Assert.That(_playlistService.GetPlaylistName(), Is.EqualTo("This is David's"));
         }
 
         [Test]
