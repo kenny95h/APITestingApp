@@ -18,7 +18,7 @@ namespace SpotifyAPITestApp.TrackServiceTests
         [Test]
         public void StatusIs200_InJsonResponseBody()
         {
-            Assert.That(_singleTrackService.Json_Response["status"].ToString(), Is.EqualTo("200"));
+            Assert.That(_singleTrackService.Json_Response["track_number"].ToString(), Is.EqualTo("1"));
         }
     }
 }
