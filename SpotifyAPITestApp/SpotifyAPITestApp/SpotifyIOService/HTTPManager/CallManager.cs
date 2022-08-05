@@ -22,10 +22,6 @@ namespace SpotifyAPITestApp.SpotifyIOService.HTTPManager
             _request.AddHeader("Authorization", AppConfigReader.AuthToken);
         }
 
-        /// <summary>
-        /// defines and makes the API request, and stores the response
-        /// </summary>
-        /// <param name="postcode"></param>
         public async Task<string> MakeRequestAsync(Resource resource, string code, Method method)
         {
                 _request.Resource = $"{resource}/{code.ToLower().Replace(" ", "")}";
