@@ -11,5 +11,7 @@ namespace SpotifyAPITestApp
     {
         public static readonly string BaseUrl = ConfigurationManager.AppSettings["base_url"];
         public static readonly string AuthToken = ConfigurationManager.AppSettings["auth_token"];
+        public static readonly string UserID = ConfigurationManager.AppSettings["user_id"];
+        public static readonly string PlaylistId = ConfigurationManager.AppSettings["playlist_id"];
     }
 }
