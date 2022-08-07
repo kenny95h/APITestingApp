@@ -24,7 +24,7 @@ namespace SpotifyAPITestApp.TrackServiceTests
         //}
 
         [Test]
-        public void ObjectNameOfTrack_IsPlaceInTheSun()
+        public void ObjectNameOfTrack_IsAllIWant()
         {
             Assert.That(_singleTrackService.TrackResponseDTO.Response.name.ToString(), Is.EqualTo("All I Want"));
         }

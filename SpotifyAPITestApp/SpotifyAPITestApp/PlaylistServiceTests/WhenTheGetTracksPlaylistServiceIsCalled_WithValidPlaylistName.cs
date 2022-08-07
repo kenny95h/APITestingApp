@@ -8,18 +8,30 @@ namespace SpotifyAPITestApp.PlaylistServiceTests
 {
     public class WhenTheGetTracksPlaylistServiceIsCalled_WithValidPlaylistName
     {
-        readonly SinglePlaylistService _playlistService = new SinglePlaylistService();
+        readonly GetPlaylistService _playlistService = new GetPlaylistService();
 
         [OneTimeSetUp]
         public async Task OneTimeSetUpAsync()
         {
-            await _playlistService.GetTracksRequestAsync("6QuKSXmuJpiHZec1mYrKwZ");
+            await _playlistService.MakeRequestAsync("3hw5F0vnHiJkqyjpUO639e");
         }
 
         [Test]
         public void NumberOfTracks_Is3()
         {
-            Assert.That(_playlistService.Json_Response["total"].ToString(), Is.EqualTo("6"));
+            Assert.That(_playlistService.Json_Response["total"].ToString(), Is.EqualTo("3"));
+        }
+
+        [Test]
+        public void ObjectNumberOfTracks_Is3()
+        {
+            Assert.That(_playlistService.PlaylistResponseDTO.Response.total, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void GetTotalNumTracks_Is3()
+        {
+            Assert.That(_playlistService.GetTotalNumTracks, Is.EqualTo(3));
         }
     }
 }

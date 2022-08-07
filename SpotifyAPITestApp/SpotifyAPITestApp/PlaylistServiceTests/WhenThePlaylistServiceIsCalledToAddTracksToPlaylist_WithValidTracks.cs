@@ -17,9 +17,10 @@ namespace SpotifyAPITestApp.PlaylistServiceTests
         }
 
         [Test]
-        public void i()
+        public void SnapshotIdGenerated_IsNotNullAndNotEmpty()
         {
-            Assert.That(_playlistService.PlaylistResponseDTO.Response.snapshot_id, Is.EqualTo("New Playlist"));
+            Assert.That(_playlistService.PlaylistResponseDTO.Response.snapshot_id, Is.Not.Null);
+            Assert.That(_playlistService.PlaylistResponseDTO.Response.snapshot_id, Is.Not.Empty);
         }
     }
 }
