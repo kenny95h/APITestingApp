@@ -9,9 +9,11 @@ namespace SpotifyAPITestApp.SpotifyIOService.HTTPManager
 
     public enum Resource
     {
-        tracks,
+        gettrack,
         playlists,
-        playlisttracks
+        playlisttracks,
+        gettracks,
+        tracks
     }
 
 }

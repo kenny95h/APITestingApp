@@ -16,6 +16,13 @@ namespace SpotifyAPITestApp.PlaylistServiceTests
             await _playlistService.MakeRequestAsync("This is David's");
         }
 
+        [Category("Create")]
+        [Test]
+        public void GetStatusCode_Is201()
+        {
+            Assert.That(_playlistService.GetStatusCode, Is.EqualTo(201));
+        }
+
         [Test]
         public void IDOfPlaylist_IsNotNull()
         {
@@ -23,7 +30,7 @@ namespace SpotifyAPITestApp.PlaylistServiceTests
         }
 
         [Test]
-        public void NameOfPlaylist_IsNewPlaylist()
+        public void NameOfPlaylist_IsThisIsDavids()
         {
             Assert.That(_playlistService.GetPlaylistName(), Is.EqualTo("This is David's"));
         }
