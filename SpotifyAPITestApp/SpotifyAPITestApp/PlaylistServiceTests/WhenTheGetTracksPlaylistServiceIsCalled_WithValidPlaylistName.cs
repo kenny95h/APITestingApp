@@ -33,5 +33,11 @@ namespace SpotifyAPITestApp.PlaylistServiceTests
         {
             Assert.That(_playlistService.GetTotalNumTracks, Is.EqualTo(3));
         }
+
+        [Test]
+        public void GetStatusCode_Is200()
+        {
+            Assert.That(_playlistService.GetStatusCode, Is.EqualTo(200));
+        }
     }
 }

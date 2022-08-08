@@ -13,14 +13,11 @@ namespace SpotifyAPITestApp
     public class SinglePlaylistService
     {
         public CallManager CallManager { get; set; }
-        // a Newtonsoft object representing the json response
         public JObject Json_Response { get; set; }
-        // the response DTO. Note, that it is a generic type, but we can specify the type of reponse we want. We will come back to this later!
         public DTO<PlaylistResponse> PlaylistResponseDTO { get; set; }
-        // the postcode used in this API request
-        public string PlaylistSelected { get; set; }
-        // the response content as a string
         public string PlaylistResponse { get; set; }
+
+        public int status;
 
         public SinglePlaylistService()
         {
@@ -30,34 +27,22 @@ namespace SpotifyAPITestApp
 
         public async Task MakeRequestAsync(string playlist)
         {
-            PlaylistSelected = playlist;
-            // make request
-            PlaylistResponse = await CallManager.MakeRequestAsync(Resource.playlists, playlist, Method.Post);
-            // Parse JSON string into a JObject
+            (PlaylistResponse, status) = await CallManager.MakeRequestAsync(Resource.playlists, playlist, Method.Post);
             Json_Response = JObject.Parse(PlaylistResponse);
-            // use DTO to convert JSON string to an object tree
             PlaylistResponseDTO.DeserializeResponse(PlaylistResponse);
         }
 
         public async Task AddTracksRequestAsync(string tracks)
         {
-            PlaylistSelected = tracks;
-            // make request
-            PlaylistResponse = await CallManager.MakeRequestAsync(Resource.playlisttracks, tracks, Method.Post);
-            // Parse JSON string into a JObject
+            (PlaylistResponse, status) = await CallManager.MakeRequestAsync(Resource.playlisttracks, tracks, Method.Post);
             Json_Response = JObject.Parse(PlaylistResponse);
-            // use DTO to convert JSON string to an object tree
             PlaylistResponseDTO.DeserializeResponse(PlaylistResponse);
         }
 
         public async Task DeleteTracksRequestAsync(string tracks)
         {
-            PlaylistSelected = tracks;
-            // make request
-            PlaylistResponse = await CallManager.MakeRequestAsync(Resource.playlisttracks, tracks, Method.Delete);
-            // Parse JSON string into a JObject
+            (PlaylistResponse, status) = await CallManager.MakeRequestAsync(Resource.playlisttracks, tracks, Method.Delete);
             Json_Response = JObject.Parse(PlaylistResponse);
-            // use DTO to convert JSON string to an object tree
             PlaylistResponseDTO.DeserializeResponse(PlaylistResponse);
         }
 
@@ -95,6 +80,10 @@ namespace SpotifyAPITestApp
         public string GetPlaylistTrackName(int index)
         {
             return PlaylistResponseDTO.Response.tracks.items[index].track.name;
+        }
+        public int GetStatusCode()
+        {
+            return status;
         }
     }
 }

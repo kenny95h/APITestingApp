@@ -17,11 +17,11 @@ namespace SpotifyAPITestApp.TrackServiceTests
             await _singleTrackService.MakeRequestAsync("2TpxZ7JUBn3uw46aR7qd6V");
         }
 
-        //[Test]
-        //public void StatusIs200_InJsonResponseBody()
-        //{
-        //    Assert.That(_singleTrackService.TrackResponseDTO.Response, Is.EqualTo("200"));
-        //}
+        [Test]
+        public void GetStatusCode_Is200()
+        {
+            Assert.That(_singleTrackService.GetStatusCode, Is.EqualTo(200));
+        }
 
         [Test]
         public void ObjectNameOfTrack_IsAllIWant()

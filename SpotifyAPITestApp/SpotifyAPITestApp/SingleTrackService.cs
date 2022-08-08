@@ -13,52 +13,41 @@ namespace SpotifyAPITestApp
     public class SingleTrackService
     {
         public CallManager CallManager { get; set; }
-        // a Newtonsoft object representing the json response
         public JObject Json_Response { get; set; }
-        // the response DTO. Note, that it is a generic type, but we can specify the type of reponse we want. We will come back to this later!
         public DTO<TrackResponse> TrackResponseDTO { get; set; }
-        // the postcode used in this API request
-        public string TrackSelected { get; set; }
-        // the response content as a string
         public string TrackResponse { get; set; }
+
+        public int status;
 
         public SingleTrackService()
         {
             CallManager = new CallManager();
             TrackResponseDTO = new DTO<TrackResponse>();
         }
-        // DRY Code Methods:
         public async Task MakeRequestAsync(string track)
         {
-            TrackSelected = track;
-            // make request
-            TrackResponse = await CallManager.MakeRequestAsync(Resource.tracks, track, Method.Get);
-            // Parse JSON string into a JObject
+            (TrackResponse, status) = await CallManager.MakeRequestAsync(Resource.gettrack, track, Method.Get);
             Json_Response = JObject.Parse(TrackResponse);
-            // use DTO to convert JSON string to an object tree
             TrackResponseDTO.DeserializeResponse(TrackResponse);
         }
 
-        public async Task PutRequestAsync(string track) // Hopefull Save a track.
+        public async Task PutRequestAsync(string track)
         {
-            TrackSelected = track;
-            // make request
-            TrackResponse = await CallManager.MakeRequestAsync(Resource.tracks, track, Method.Put);
-            // Parse JSON string into a JObject
-            Json_Response = JObject.Parse(TrackResponse);
-            // use DTO to convert JSON string to an object tree
-            TrackResponseDTO.DeserializeResponse(TrackResponse);
+            (TrackResponse, status) = await CallManager.MakeRequestAsync(Resource.tracks, track, Method.Put);
+            //Json_Response = JObject.Parse(TrackResponse);
+            //TrackResponseDTO.DeserializeResponse(TrackResponse);
         }
 
-        public async Task DeleteRequestAsync(string track) // Hopefully Deletes a track.
+        public async Task DeleteRequestAsync(string track)
         {
-            TrackSelected = track;
-            // make request
-            TrackResponse = await CallManager.MakeRequestAsync(Resource.tracks, track, Method.Delete);
-            // Parse JSON string into a JObject
-            Json_Response = JObject.Parse(TrackResponse);
-            // use DTO to convert JSON string to an object tree
-            TrackResponseDTO.DeserializeResponse(TrackResponse);
+            (TrackResponse, status) = await CallManager.MakeRequestAsync(Resource.tracks, track, Method.Delete);
+            //Json_Response = JObject.Parse(TrackResponse);
+            //TrackResponseDTO.DeserializeResponse(TrackResponse);
+        }
+
+        public int GetStatusCode()
+        {
+            return status;
         }
     }
 }
