@@ -12,11 +12,7 @@ The API documentation is located at https://developer.spotify.com/documentation/
 
 Since many of these functions require a user account on Spotify (creating a playlist, for example), one was created purely to aid in developing the framework. And since using certain functions in the API require authorization, it was necessary to follow the OAuth [Authorization Code Flow](https://developer.spotify.com/documentation/general/guides/authorization/code-flow/) , thereby gaining access and refresh tokens to use with the API.
 
-<hr>
 
-### After Sprint
-
-![after sprint screenshot](https://i.ibb.co/M8jdpg2/After-Sprint.jpg)
 
 <hr>
 
